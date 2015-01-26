@@ -66,7 +66,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+.state('tab.nearby', {
+    url: '/nearby',
+    views: {
+      'tab-nearby': {
+        templateUrl: 'templates/tab-nearby.html',
+        controller: 'NearByCtrl'
+      }
+    }
+  })
   .state('tab.friends', {
       url: '/friends',
       views: {
