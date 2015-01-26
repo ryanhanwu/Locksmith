@@ -1,12 +1,27 @@
-#Locksmith
+# Locksmith
+
+
+## Development
+
+### Install Ionic and Cordova
+```
+npm install -g ionic cordova
+npm install -g gulp
+```
+
+### Config
+#### 1. Create config.json from your [Parse](http://parse.com) credientials
 
 ```
-npm install -g ionic cordova gulp
-npm install
+{
+    "PARSE" : {
+        "APP_ID" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "REST_API_KEY" : "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    }
+}
 ```
+#### 2. Generate config file for application
 
-
-### Create API key
 ```
 gulp config
 ```
