@@ -1,5 +1,7 @@
-angular.module('starter.services', [])
-
+angular.module('starter.services', ['ngResource'])
+.factory('LockSmith', function($resource) {
+  return $resource('/1/classes/LockSmith/:id');
+})
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
