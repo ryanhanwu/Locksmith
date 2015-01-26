@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('locksmith.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -30,6 +30,12 @@ angular.module('starter.controllers', [])
           shadow: null,
           zIndex: 999
         });
+      },function (err) {
+        alert(err);
+      },{
+        maximumAge: 3000,
+        timeout: 5000,
+        enableHighAccuracy: true
       });
       $scope.map = map;
       LockSmith.query(function(data) {

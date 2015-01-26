@@ -4,14 +4,26 @@ var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
+var ngConstant = require('gulp-ng-constant');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  sass: ['./scss/**/*.scss'],
+  config: ['./config.json']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['config', 'sass']);
+
+gulp.task('config', function () {
+  gulp.src(paths.config[0])
+    .pipe(ngConstant({
+      name: 'locksmith',
+      deps: ['ionic', 'locksmith.controllers', 'locksmith.services']
+    }))
+    // Writes config.js to dist/ folder
+    .pipe(gulp.dest('./www/js/'));
+});
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -26,6 +38,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(paths.config, ['config']);
   gulp.watch(paths.sass, ['sass']);
 });
 

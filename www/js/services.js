@@ -1,8 +1,8 @@
-angular.module('starter.services', ['ngResource'])
-  .factory('LockSmith', function($resource, $http) {
+angular.module('locksmith.services', ['ngResource'])
+  .factory('LockSmith', function($resource, $http, PARSE) {
     $http.defaults.headers.common = {
-      'X-Parse-Application-Id': 'jnqGPSJZvnqE6Mqv2MZLYfIXKIIJ4QZH6Wiln0RM',
-      'X-Parse-REST-API-Key': 'kjCG0ONGDVUIArF2dm9pmScbqucpmcgGiSL0aSyP'
+      'X-Parse-Application-Id': PARSE.APP_ID,
+      'X-Parse-REST-API-Key': PARSE.REST_API_KEY
     };
     return $resource('https://api.parse.com/1/classes/LockSmith/', null, {
       query : {
